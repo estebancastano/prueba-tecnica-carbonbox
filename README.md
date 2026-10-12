@@ -2,7 +2,7 @@
 
 Aplicación para cargar archivos CSV, procesar datos de actividad y consultar los resultados desde una interfaz web.
 
-> La configuración descrita corresponde al estado actual del repositorio. No copies credenciales reales en este documento ni subas los archivos `.env` al control de versiones.
+> La 
 
 ## Estado del proyecto
 
