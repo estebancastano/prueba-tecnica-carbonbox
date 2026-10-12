@@ -176,22 +176,7 @@ No borres volúmenes ni bases de datos para resolver errores de contraseña: eso
 
 Prisma 7 ya no acepta `url = env("DATABASE_URL")` dentro de `schema.prisma`. En este proyecto la URL de Prisma CLI vive en `backend/prisma.config.ts`, el schema define `provider = "postgresql"` y la aplicación conecta mediante `@prisma/adapter-pg`. Mantén alineadas las versiones `prisma`, `@prisma/client` y el adaptador indicadas en `backend/package.json`.
 
-### Docker Desktop no está disponible
 
-Si Compose muestra que no puede conectarse a `dockerDesktopLinuxEngine`, inicia Docker Desktop y espera a que el motor esté listo. La configuración Compose se puede validar sin iniciar contenedores con `docker compose config`, pero para usar la base de Compose se necesita Docker en ejecución.
 
-### Diferencia entre la base local y la base de Docker
 
-La base PostgreSQL instalada en Windows y la base de Compose son instancias distintas, aunque ambas publiquen `localhost:5432`. No comparten automáticamente usuarios, contraseñas ni bases. Si el puerto está ocupado por PostgreSQL local, Compose puede no iniciar su propio servicio en ese mismo puerto; puedes detener una instancia o cambiar el puerto publicado de Compose.
 
-### CSV rechazado
-
-El CSV debe incluir `category`, `amount`, `unit` y `date`, además de enviar el campo multipart `userId`. La carga puede crearse y luego marcarse `FAILED` si el procesamiento detecta filas inválidas; revisa `errorMessage` en el detalle.
-
-## Seguridad y datos
-
-- No subir `backend/.env` ni `frontend/.env.local` al repositorio.
-- No pegar credenciales en logs, issues ni mensajes públicos.
-- `userId` lo envía el cliente y no demuestra identidad. Con autenticación, debe obtenerse en el backend de la sesión/token verificado.
-- La cola en memoria se pierde al reiniciar. No es adecuada para varios procesos ni para producción.
-- El filesystem local y las credenciales de ejemplo de Compose son para desarrollo local, no para producción.
