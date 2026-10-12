@@ -5,7 +5,7 @@ Aplicación para cargar archivos CSV, procesar datos de actividad y consultar lo
 
 ## Estado del proyecto
 
-### Implementado
+### Implementé
 
 - **Backend:** Node.js, TypeScript, Fastify y Prisma 7.
 - **Base de datos:** PostgreSQL. Prisma usa `@prisma/adapter-pg`.
@@ -18,12 +18,12 @@ Aplicación para cargar archivos CSV, procesar datos de actividad y consultar lo
 
 ### Simplificaciones y trabajo pendiente
 
-- La mensajería es un **mock en memoria**: no se usa SQS y los mensajes no sobreviven al reinicio del backend.
-- Los archivos se guardan en el **filesystem local**: no se usa S3.
-- `userId` se recibe del formulario y sirve para asociar cargas; **no hay autenticación**. No debe tratarse como identidad verificada.
-- No hay una suite de tests unitarios configurada.
-- El procesamiento no tiene una estrategia avanzada de reintentos.
-- Docker Compose está configurado y su sintaxis fue validada, pero el entorno de desarrollo donde se trabajó no tenía Docker Desktop disponible para verificar el arranque real de los contenedores.
+- La mensajería es un **mock en memoria**: no usé SQS y los mensajes no sobreviven al reinicio del backend (Falta de recursos).
+- Los archivos se guardan en el **filesystem local**: no usé S3 (Falta de recursos).
+- `userId` se recibe del formulario y sirve para asociar cargas; **no realicé una autenticación** (No lo ví necesario).
+- No hay una suite de tests unitarios configurada (falta de tiempo).
+- El procesamiento no tiene una estrategia avanzada de reintentos(falta de tiempo).
+- Docker Compose está configurado pero no está testeado (falta de tiempo).
 
 ## Estructura
 
@@ -47,7 +47,7 @@ Aplicación para cargar archivos CSV, procesar datos de actividad y consultar lo
         └── styles/
 ```
 
-El esquema Prisma está en [backend/src/document-processing/infrastructure/persistence/models/schema.prisma](./backend/src/document-processing/infrastructure/persistence/models/schema.prisma). Las migraciones PostgreSQL activas están en `backend/src/document-processing/infrastructure/persistence/models/migrations-postgresql/`. La carpeta `migrations/` contiene las migraciones SQLite históricas; no se deben aplicar a PostgreSQL.
+El esquema Prisma está en [backend/src/document-processing/infrastructure/persistence/models/schema.prisma](./backend/src/document-processing/infrastructure/persistence/models/schema.prisma). Las migraciones PostgreSQL activas están en `backend/src/document-processing/infrastructure/persistence/models/migrations-postgresql/`.
 
 ## Requisitos
 
@@ -58,7 +58,7 @@ El esquema Prisma está en [backend/src/document-processing/infrastructure/persi
 ## Configuración local con PostgreSQL instalado en Windows
 
 1. Copia `backend/.env.example` a `backend/.env`.
-2. Edita `DATABASE_URL` para que use el usuario, contraseña, puerto y base de datos de **tu servidor PostgreSQL local**. No compartas ni publiques esa URL.
+2. Edita `DATABASE_URL` para que use el usuario, contraseña, puerto y base de datos de **tu servidor PostgreSQL local**.
 3. Si la base indicada aún no existe, créala con PostgreSQL antes de continuar.
 4. Ejecuta en una terminal:
 
