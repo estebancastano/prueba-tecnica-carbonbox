@@ -29,6 +29,11 @@ docker compose up --build
 
 El servidor escucha por defecto en `http://localhost:3000`.
 
+En Docker Compose, `DATABASE_URL` debe usar el mismo usuario y contraseña
+configurados como `POSTGRES_USER` y `POSTGRES_PASSWORD` del servicio `db`.
+Si cambias esas credenciales, actualiza ambos lados; las variables de
+inicialización de PostgreSQL no modifican usuarios de un volumen ya creado.
+
 La configuración se puede modificar mediante `HOST`, `PORT`, `DATABASE_URL`, `UPLOAD_DIRECTORY` y `MAX_FILE_SIZE_BYTES`. La URL local predeterminada es `postgresql://carbonbox:carbonbox@localhost:5432/carbonbox?schema=public`; cambia las credenciales en `.env` y `docker-compose.yml` para un despliegue real. El valor predeterminado limita los archivos a 10 MiB.
 
 ## API

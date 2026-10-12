@@ -27,7 +27,7 @@ services:
     environment:
       HOST: 0.0.0.0
       PORT: 3000
-      DATABASE_URL: postgresql://carbonbox:carbonbox@db:5432/carbonbox?schema=public
+      DATABASE_URL: postgresql://postgres:1234@db:5432/carbonbox?schema=public
       UPLOAD_DIRECTORY: /app/data/uploads
     volumes:
       - ./uploads:/app/data/uploads
