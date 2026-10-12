@@ -107,7 +107,7 @@ npm install
 npm run dev
 ```
 
-Abre `http://localhost:3001`. Next.js reenvía `/api/*` al backend en `http://localhost:3000`. Si el backend usa otra dirección, configura `BACKEND_URL` en `frontend/.env.local`.
+Abre `http://localhost:3001`.
 
 ## API
 
