@@ -2,7 +2,6 @@
 
 Aplicación para cargar archivos CSV, procesar datos de actividad y consultar los resultados desde una interfaz web.
 
-> La 
 
 ## Estado del proyecto
 
