@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: carbonbox
+      POSTGRES_USER: carbonbox
+      POSTGRES_PASSWORD: carbonbox
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carbonbox -d carbonbox"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATABASE_URL: postgresql://carbonbox:carbonbox@db:5432/carbonbox?schema=public
+      UPLOAD_DIRECTORY: /app/data/uploads
+    volumes:
+      - ./uploads:/app/data/uploads
+
+volumes:
+  postgres_data:
