@@ -4,14 +4,14 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_DB: carbonbox
-      POSTGRES_USER: carbonbox
-      POSTGRES_PASSWORD: carbonbox
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U carbonbox -d carbonbox"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d carbonbox"]
       interval: 5s
       timeout: 5s
       retries: 10
